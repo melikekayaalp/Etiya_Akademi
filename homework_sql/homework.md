@@ -2,11 +2,11 @@ SQL Homework
 28.11.2022
 
 >- **<h3>Soru 1</h3>-- 65.sokak ekle.**
-
+```
 insert into streets(name,district_id)
 VALUES('65.sk',1)
 Select * from streets
-
+```
 
 >- **<h3>Soru 2</h3>--65.sokağı 70.sokak olarak güncelle**
 
