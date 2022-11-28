@@ -1,2 +1,0 @@
-# Etiya_Akademi
-
