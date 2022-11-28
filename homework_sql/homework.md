@@ -22,13 +22,13 @@ where name = '70.sk'
 
 
 >- **<h3>Soru 4</h3>--ismi deneme olan kullanıcıları listele.**
->
+
 Select * from users
 where lower(name) IN('deneme')
 
 
 >- **<h3>Soru 5</h3>--5 ile 25 arasında stoğu bulunan ürünleri listele.**
->
+
 Select * from products
 where stock between 5 and 25
 
@@ -44,14 +44,14 @@ group by ca.name order by adet
 
 
 >- **<h3>Soru 7</h3>--Adresi olmayan kullanıcıları listele**
->
+
 select * from users usr left join addresses adr
 on usr.id=adr.user_id 
 where adr.street_id is null
 
 
 >- **<h3>Soru 8</h3>--Mail adresi veya adresi bulunmayan kullanıcıları listele**
->
+
 select * from addresses ad full outer join users us
 on ad.user_id = us.id
 where street_id is null or email is null
