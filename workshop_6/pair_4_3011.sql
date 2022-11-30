@@ -5,7 +5,7 @@
 -- Dumped from database version 15.1
 -- Dumped by pg_dump version 15.1
 
--- Started on 2022-11-30 15:22:35
+-- Started on 2022-11-30 15:35:47
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -725,10 +725,8 @@ ALTER TABLE public.users ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 -- Data for Name: address_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.address_types (id, name) FROM stdin;
-1	Ev
-2	İş
-\.
+INSERT INTO public.address_types (id, name) OVERRIDING SYSTEM VALUE VALUES (1, 'Ev');
+INSERT INTO public.address_types (id, name) OVERRIDING SYSTEM VALUE VALUES (2, 'İş');
 
 
 --
@@ -737,9 +735,7 @@ COPY public.address_types (id, name) FROM stdin;
 -- Data for Name: addresses; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.addresses (id, description, address_type_id, street_id, user_id) FROM stdin;
-1	denemeev	1	1	1
-\.
+INSERT INTO public.addresses (id, description, address_type_id, street_id, user_id) OVERRIDING SYSTEM VALUE VALUES (1, 'denemeev', 1, 1, 1);
 
 
 --
@@ -748,9 +744,7 @@ COPY public.addresses (id, description, address_type_id, street_id, user_id) FRO
 -- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.carts (id, total_price, user_id) FROM stdin;
-1	?55.500,00	1
-\.
+INSERT INTO public.carts (id, total_price, user_id) OVERRIDING SYSTEM VALUE VALUES (1, '?55.500,00', 1);
 
 
 --
@@ -759,11 +753,9 @@ COPY public.carts (id, total_price, user_id) FROM stdin;
 -- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.categories (id, name) FROM stdin;
-1	Giyim
-2	İçecek
-3	Teknoloji
-\.
+INSERT INTO public.categories (id, name) OVERRIDING SYSTEM VALUE VALUES (1, 'Giyim');
+INSERT INTO public.categories (id, name) OVERRIDING SYSTEM VALUE VALUES (2, 'İçecek');
+INSERT INTO public.categories (id, name) OVERRIDING SYSTEM VALUE VALUES (3, 'Teknoloji');
 
 
 --
@@ -772,13 +764,11 @@ COPY public.categories (id, name) FROM stdin;
 -- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.cities (id, name, country_id) FROM stdin;
-1	Ankara	1
-2	Berlin	2
-3	Bursa	1
-4	Adana	1
-8	Amsterdam	3
-\.
+INSERT INTO public.cities (id, name, country_id) OVERRIDING SYSTEM VALUE VALUES (1, 'Ankara', 1);
+INSERT INTO public.cities (id, name, country_id) OVERRIDING SYSTEM VALUE VALUES (2, 'Berlin', 2);
+INSERT INTO public.cities (id, name, country_id) OVERRIDING SYSTEM VALUE VALUES (3, 'Bursa', 1);
+INSERT INTO public.cities (id, name, country_id) OVERRIDING SYSTEM VALUE VALUES (4, 'Adana', 1);
+INSERT INTO public.cities (id, name, country_id) OVERRIDING SYSTEM VALUE VALUES (8, 'Amsterdam', 3);
 
 
 --
@@ -787,11 +777,9 @@ COPY public.cities (id, name, country_id) FROM stdin;
 -- Data for Name: countries; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.countries (id, name) FROM stdin;
-1	Turkiye
-2	Almanya
-3	Hollanda
-\.
+INSERT INTO public.countries (id, name) OVERRIDING SYSTEM VALUE VALUES (1, 'Turkiye');
+INSERT INTO public.countries (id, name) OVERRIDING SYSTEM VALUE VALUES (2, 'Almanya');
+INSERT INTO public.countries (id, name) OVERRIDING SYSTEM VALUE VALUES (3, 'Hollanda');
 
 
 --
@@ -800,9 +788,7 @@ COPY public.countries (id, name) FROM stdin;
 -- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.customers (id, customer_number, user_id, birth_date) FROM stdin;
-1	123123	2	2000-01-05
-\.
+INSERT INTO public.customers (id, customer_number, user_id, birth_date) OVERRIDING SYSTEM VALUE VALUES (1, '123123', 2, '2000-01-05');
 
 
 --
@@ -811,9 +797,7 @@ COPY public.customers (id, customer_number, user_id, birth_date) FROM stdin;
 -- Data for Name: districts; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.districts (id, name, town_id) FROM stdin;
-1	Eryaman	1
-\.
+INSERT INTO public.districts (id, name, town_id) OVERRIDING SYSTEM VALUE VALUES (1, 'Eryaman', 1);
 
 
 --
@@ -822,15 +806,13 @@ COPY public.districts (id, name, town_id) FROM stdin;
 -- Data for Name: order_details; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.order_details (id, product_suppliers_id, quantity) FROM stdin;
-1	1	2
-2	2	5
-3	3	1
-4	4	3
-5	1	4
-6	1	3
-7	1	2
-\.
+INSERT INTO public.order_details (id, product_suppliers_id, quantity) OVERRIDING SYSTEM VALUE VALUES (1, 1, 2);
+INSERT INTO public.order_details (id, product_suppliers_id, quantity) OVERRIDING SYSTEM VALUE VALUES (2, 2, 5);
+INSERT INTO public.order_details (id, product_suppliers_id, quantity) OVERRIDING SYSTEM VALUE VALUES (3, 3, 1);
+INSERT INTO public.order_details (id, product_suppliers_id, quantity) OVERRIDING SYSTEM VALUE VALUES (4, 4, 3);
+INSERT INTO public.order_details (id, product_suppliers_id, quantity) OVERRIDING SYSTEM VALUE VALUES (5, 1, 4);
+INSERT INTO public.order_details (id, product_suppliers_id, quantity) OVERRIDING SYSTEM VALUE VALUES (6, 1, 3);
+INSERT INTO public.order_details (id, product_suppliers_id, quantity) OVERRIDING SYSTEM VALUE VALUES (7, 1, 2);
 
 
 --
@@ -839,15 +821,13 @@ COPY public.order_details (id, product_suppliers_id, quantity) FROM stdin;
 -- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.orders (id, payment_id, order_detail_id, order_date) FROM stdin;
-2	1	1	2022-11-29
-5	1	2	1999-01-02
-6	4	3	2000-01-05
-7	3	4	2022-06-29
-8	1	5	2022-04-05
-9	1	6	2022-07-05
-10	1	7	2022-01-05
-\.
+INSERT INTO public.orders (id, payment_id, order_detail_id, order_date) OVERRIDING SYSTEM VALUE VALUES (2, 1, 1, '2022-11-29');
+INSERT INTO public.orders (id, payment_id, order_detail_id, order_date) OVERRIDING SYSTEM VALUE VALUES (5, 1, 2, '1999-01-02');
+INSERT INTO public.orders (id, payment_id, order_detail_id, order_date) OVERRIDING SYSTEM VALUE VALUES (6, 4, 3, '2000-01-05');
+INSERT INTO public.orders (id, payment_id, order_detail_id, order_date) OVERRIDING SYSTEM VALUE VALUES (7, 3, 4, '2022-06-29');
+INSERT INTO public.orders (id, payment_id, order_detail_id, order_date) OVERRIDING SYSTEM VALUE VALUES (8, 1, 5, '2022-04-05');
+INSERT INTO public.orders (id, payment_id, order_detail_id, order_date) OVERRIDING SYSTEM VALUE VALUES (9, 1, 6, '2022-07-05');
+INSERT INTO public.orders (id, payment_id, order_detail_id, order_date) OVERRIDING SYSTEM VALUE VALUES (10, 1, 7, '2022-01-05');
 
 
 --
@@ -856,13 +836,11 @@ COPY public.orders (id, payment_id, order_detail_id, order_date) FROM stdin;
 -- Data for Name: payment_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.payment_types (id, name) FROM stdin;
-1	Kart
-2	havale
-4	Kapıda ödeme
-5	Nakit
-6	Deneme Update
-\.
+INSERT INTO public.payment_types (id, name) OVERRIDING SYSTEM VALUE VALUES (1, 'Kart');
+INSERT INTO public.payment_types (id, name) OVERRIDING SYSTEM VALUE VALUES (2, 'havale');
+INSERT INTO public.payment_types (id, name) OVERRIDING SYSTEM VALUE VALUES (4, 'Kapıda ödeme');
+INSERT INTO public.payment_types (id, name) OVERRIDING SYSTEM VALUE VALUES (5, 'Nakit');
+INSERT INTO public.payment_types (id, name) OVERRIDING SYSTEM VALUE VALUES (6, 'Deneme Update');
 
 
 --
@@ -871,12 +849,10 @@ COPY public.payment_types (id, name) FROM stdin;
 -- Data for Name: payments; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.payments (id, payment_type_id, description, user_id) FROM stdin;
-4	2	iban	2
-1	1	ziraat kartı	1
-3	1	garanti kartı	1
-5	5	nakit	3
-\.
+INSERT INTO public.payments (id, payment_type_id, description, user_id) OVERRIDING SYSTEM VALUE VALUES (4, 2, 'iban', 2);
+INSERT INTO public.payments (id, payment_type_id, description, user_id) OVERRIDING SYSTEM VALUE VALUES (1, 1, 'ziraat kartı', 1);
+INSERT INTO public.payments (id, payment_type_id, description, user_id) OVERRIDING SYSTEM VALUE VALUES (3, 1, 'garanti kartı', 1);
+INSERT INTO public.payments (id, payment_type_id, description, user_id) OVERRIDING SYSTEM VALUE VALUES (5, 5, 'nakit', 3);
 
 
 --
@@ -885,13 +861,11 @@ COPY public.payments (id, payment_type_id, description, user_id) FROM stdin;
 -- Data for Name: product_categories; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.product_categories (id, product_id, category_id) FROM stdin;
-1	1	1
-2	2	2
-3	3	3
-4	4	3
-5	5	1
-\.
+INSERT INTO public.product_categories (id, product_id, category_id) OVERRIDING SYSTEM VALUE VALUES (1, 1, 1);
+INSERT INTO public.product_categories (id, product_id, category_id) OVERRIDING SYSTEM VALUE VALUES (2, 2, 2);
+INSERT INTO public.product_categories (id, product_id, category_id) OVERRIDING SYSTEM VALUE VALUES (3, 3, 3);
+INSERT INTO public.product_categories (id, product_id, category_id) OVERRIDING SYSTEM VALUE VALUES (4, 4, 3);
+INSERT INTO public.product_categories (id, product_id, category_id) OVERRIDING SYSTEM VALUE VALUES (5, 5, 1);
 
 
 --
@@ -900,16 +874,14 @@ COPY public.product_categories (id, product_id, category_id) FROM stdin;
 -- Data for Name: product_suppliers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.product_suppliers (id, product_id, supplier_id) FROM stdin;
-1	1	1
-2	2	2
-3	3	3
-4	4	4
-5	2	1
-6	2	3
-7	3	1
-8	1	2
-\.
+INSERT INTO public.product_suppliers (id, product_id, supplier_id) OVERRIDING SYSTEM VALUE VALUES (1, 1, 1);
+INSERT INTO public.product_suppliers (id, product_id, supplier_id) OVERRIDING SYSTEM VALUE VALUES (2, 2, 2);
+INSERT INTO public.product_suppliers (id, product_id, supplier_id) OVERRIDING SYSTEM VALUE VALUES (3, 3, 3);
+INSERT INTO public.product_suppliers (id, product_id, supplier_id) OVERRIDING SYSTEM VALUE VALUES (4, 4, 4);
+INSERT INTO public.product_suppliers (id, product_id, supplier_id) OVERRIDING SYSTEM VALUE VALUES (5, 2, 1);
+INSERT INTO public.product_suppliers (id, product_id, supplier_id) OVERRIDING SYSTEM VALUE VALUES (6, 2, 3);
+INSERT INTO public.product_suppliers (id, product_id, supplier_id) OVERRIDING SYSTEM VALUE VALUES (7, 3, 1);
+INSERT INTO public.product_suppliers (id, product_id, supplier_id) OVERRIDING SYSTEM VALUE VALUES (8, 1, 2);
 
 
 --
@@ -918,13 +890,11 @@ COPY public.product_suppliers (id, product_id, supplier_id) FROM stdin;
 -- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.products (id, name, unit_price, stock, production_date) FROM stdin;
-2	Gazoz	?1.100,00	44	1999-07-07
-4	Klavye	?33.300,00	22	2000-08-08
-5	Kazak	?17.700,00	33	2001-06-09
-1	T-shirt	?22.200,00	22	2022-07-04
-3	Laptop	?44.400,00	5	2020-01-01
-\.
+INSERT INTO public.products (id, name, unit_price, stock, production_date) OVERRIDING SYSTEM VALUE VALUES (2, 'Gazoz', '?1.100,00', 44, '1999-07-07');
+INSERT INTO public.products (id, name, unit_price, stock, production_date) OVERRIDING SYSTEM VALUE VALUES (4, 'Klavye', '?33.300,00', 22, '2000-08-08');
+INSERT INTO public.products (id, name, unit_price, stock, production_date) OVERRIDING SYSTEM VALUE VALUES (5, 'Kazak', '?17.700,00', 33, '2001-06-09');
+INSERT INTO public.products (id, name, unit_price, stock, production_date) OVERRIDING SYSTEM VALUE VALUES (1, 'T-shirt', '?22.200,00', 22, '2022-07-04');
+INSERT INTO public.products (id, name, unit_price, stock, production_date) OVERRIDING SYSTEM VALUE VALUES (3, 'Laptop', '?44.400,00', 5, '2020-01-01');
 
 
 --
@@ -933,9 +903,7 @@ COPY public.products (id, name, unit_price, stock, production_date) FROM stdin;
 -- Data for Name: streets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.streets (id, name, district_id) FROM stdin;
-1	111. Sk	1
-\.
+INSERT INTO public.streets (id, name, district_id) OVERRIDING SYSTEM VALUE VALUES (1, '111. Sk', 1);
 
 
 --
@@ -944,12 +912,10 @@ COPY public.streets (id, name, district_id) FROM stdin;
 -- Data for Name: suppliers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.suppliers (id, supplier_number, user_id) FROM stdin;
-1	12313123123	1
-2	14124124124	2
-3	15151515151	4
-4	123132141	3
-\.
+INSERT INTO public.suppliers (id, supplier_number, user_id) OVERRIDING SYSTEM VALUE VALUES (1, '12313123123', 1);
+INSERT INTO public.suppliers (id, supplier_number, user_id) OVERRIDING SYSTEM VALUE VALUES (2, '14124124124', 2);
+INSERT INTO public.suppliers (id, supplier_number, user_id) OVERRIDING SYSTEM VALUE VALUES (3, '15151515151', 4);
+INSERT INTO public.suppliers (id, supplier_number, user_id) OVERRIDING SYSTEM VALUE VALUES (4, '123132141', 3);
 
 
 --
@@ -958,9 +924,7 @@ COPY public.suppliers (id, supplier_number, user_id) FROM stdin;
 -- Data for Name: towns; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.towns (id, name, city_id) FROM stdin;
-1	Etimesgut	1
-\.
+INSERT INTO public.towns (id, name, city_id) OVERRIDING SYSTEM VALUE VALUES (1, 'Etimesgut', 1);
 
 
 --
@@ -969,14 +933,12 @@ COPY public.towns (id, name, city_id) FROM stdin;
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.users (id, name, phone_number, email) FROM stdin;
-1	Mert	55555555	asdasd@gmail.com
-2	Burak	66666666	asdasd1@gmail.com
-3	Deneme	77777777	asdasd2@gmail.com
-4	Deneme2	8888888	asdasd3@gmail.com
-5	burak	5555555	asdasdad@gmail.com
-6	Mert	7987878	asdasda@gmail.com
-\.
+INSERT INTO public.users (id, name, phone_number, email) OVERRIDING SYSTEM VALUE VALUES (1, 'Mert', '55555555', 'asdasd@gmail.com');
+INSERT INTO public.users (id, name, phone_number, email) OVERRIDING SYSTEM VALUE VALUES (2, 'Burak', '66666666', 'asdasd1@gmail.com');
+INSERT INTO public.users (id, name, phone_number, email) OVERRIDING SYSTEM VALUE VALUES (3, 'Deneme', '77777777', 'asdasd2@gmail.com');
+INSERT INTO public.users (id, name, phone_number, email) OVERRIDING SYSTEM VALUE VALUES (4, 'Deneme2', '8888888', 'asdasd3@gmail.com');
+INSERT INTO public.users (id, name, phone_number, email) OVERRIDING SYSTEM VALUE VALUES (5, 'burak', '5555555', 'asdasdad@gmail.com');
+INSERT INTO public.users (id, name, phone_number, email) OVERRIDING SYSTEM VALUE VALUES (6, 'Mert', '7987878', 'asdasda@gmail.com');
 
 
 --
@@ -1492,7 +1454,7 @@ ALTER TABLE ONLY public.towns
     ADD CONSTRAINT towns_cities_id_fk FOREIGN KEY (city_id) REFERENCES public.cities(id);
 
 
--- Completed on 2022-11-30 15:22:35
+-- Completed on 2022-11-30 15:35:47
 
 --
 -- PostgreSQL database dump complete
